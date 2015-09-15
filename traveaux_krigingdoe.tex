@@ -1,0 +1,46 @@
+\subsection*{Kriging Doe}
+
+Dans cette partie notre but était de réaliser l’industrialisation
+de module traitant du des domaines de la statistique et de la
+geostatistique tels que le design of experiment et la technique
+d’estimations du kriging et des ses dérivés.
+
+A partir des travaux réalisés par d’anciens stagiaires de l’entreprise,
+et nos missions consistait à :
+
+\begin{itemize}
+    \item Prendre en main leur projet en réalisant une lecture
+        de leur rapport de stage, de la bibliographie associée
+        et de rechercher des informations sur les thèmes.
+    \item Restructurer leur codes sous un format plus industriel.
+        c’est a dire sous le format des toolboxes Scilab.
+    \item Corriger les différentes erreurs qu’on aurait
+        éventuellement rencontré et faire tourner leur implémentations.
+    \item Établir des scripts de démonstration pour ces nouveaux modules.
+    \item Et pour finir, comparer la nouvelle toolbox avec d’autre
+        existante (Dace, Scidoe) pour déterminer l’apport de ces
+        travaux sur la bibliothèque de module Scilab.
+\end{itemize}
+
+Nous avons donc réalisé ces travaux pendant environ 1 mois et 2 semaine,
+et présenter notre analyse sur le sujet à notre responsable
+et au reste de l’équipe Scilab.
+
+Pour réaliser l’industrialisation de ce code,
+nous avons utilisé les connaissances relatives à
+l’extensibilité du logiciel, acquises lors de la formation.
+Nous avons donc utilisé un squelette de toolbox classique
+de scilab ({\tt toolbox\_skeleton}) pour mettre en forme
+le code de départ.
+
+Après une étude approfondi et un ensemble de tests et comparaisons.
+Nous avons convenu que les modules déjà existant pour ces thématiques,
+produisait de meilleures performances que ceux sur lesquels nous travaillions.
+
+Néanmoins il était éventuellement intéressant d’ajouter aux modules existants,
+certaines fonctionalités de ces travaux.
+
+\subsubsection*{Exemple}
+Pour la toolbox Dace traitant du kriging, nous avions ainsi l’idée d'intégrer
+la technique du cokriging dite plus précise mais plus consommatrice en terme de calcul.
+
