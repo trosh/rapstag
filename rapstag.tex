@@ -1,68 +1,23 @@
-Rapport de Stage:
-Diop Abdoulaye
-Gliksberg John
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
 
-Objectifs du stage:
-Industrialisation de modules Scilab
-Développement sur la version 6 de Scilab
-Contribution a distribution Open source
+\title{Rapport de Stage}
+\author{Diop Abdoulaye \\
+        Gliksberg John}
+\date{}
 
-Travaux Réalisés:
-Durant notre stage nous avions principalement deux objectifs, l’industrialisation de modules scilab et le développement sur la version 6. Ces dernier consistait a réaliser la restructuration de code scilab sous la format d’une Toolbox, et au passage de modules complémentaires à Scilab de la versions 5 vers la version 6. Avant de les entamer on a néanmoins suivi une formation sur le logiciel, ses possibilités et son extensibilité.
+\begin{document}
+\maketitle
 
-Kriging Doe:
+\input{objectifs}
 
-Dans cette partie notre but était de réaliser l’industrialisation de module traitant du des domaines de la statistique et de la geostatistique tels que le design of experiment et la technique d’estimations du kriging et des ses dérivés.
-A partir des travaux réalisés par d’anciens stagiaires de l’entreprise, et nos missions consistait à :
-Prendre en main leur projet en réalisant une lecture de leur rapport de stage, de la bibliographie associée et de rechercher des informations sur les thèmes.
-Restructurer leur codes sous un format plus industriel. c’est a dire sous le format des toolboxes Scilab.
-Corriger les différentes erreurs qu’on aurait éventuellement rencontré et faire tourner leur implémentations.
-Établir des scripts de démonstration pour ces nouveaux modules.
-Et pour finir, comparer la nouvelle toolbox avec d’autre existante (Dace, Scidoe) pour déterminer l’apport de ces travaux sur la bibliothèque de module Scilab.
-Nous avons donc réalisé ces travaux pendant environ 1 mois et 2 semaine, et présenter notre analyse sur le sujet à notre responsable et au reste de l’équipe Scilab.
-Pour réaliser l’industrialisation de ce code, nous avons utilisé les connaissances, relatives à l’extensibilité du logiciel, acquises lors de la formation. Nous avons donc utilisé un squelette de toolbox classique de scilab (toolbox_skeleton) pour mettre en forme le code de départ. 
+\input{traveaux}
 
-Après une étude approfondi et un ensemble de tests et comparaisons. Nous avons convenu que les modules déjà existant pour ces thématiques, produisait de meilleures performances que ceux sur lesquels nous travaillions.
-Néanmoins il était éventuellement intéressant d’ajouter aux modules existants, certaines fonctionalités de ces travaux.
+\input{bilan}
 
-
-
-Exemple:
-Pour la toolbox Dace traitant du kriging, nous avions ainsi l’idée d'intégrer la technique du cokriging dite plus précise mais plus consommatrice en terme de calcul.
-
-Passage des “complementary modules” sur la version 6:
-
-Ici notre but était de faire passer les modules de la listes SCM (Scilab complementary modules) dans la versions 6 de scilab. Il est nécessaire de passer par cette étape puisque pour la nouvelle “release”, le coeur du logiciel a été refondu, et des fonctions internes ont été modifiées ou supprimées. Ainsi plusieurs modules dépendants d’anciennes fonctions internes doivent être réécrit.
-Nous avons commencé ces travaux en établissant une feuilles de calcul, ou nous avons répertorier l’ensemble des toolboxes à tester.
-On peut diviser ces modules en 2 catégories:
-Ceux composés uniquement de macros, c’est a dire des fichiers scripts Scilab d’extension .sce ou sci. Il s’agit de fonctions Scilab utilisant le langage du logiciel.
-Ceux utilisant des gateways, qui sont des fichiers permettant d’appeler des codes d’autres langages de programmation, tels que le C, le C++ et le Java.
-Au début de cette partie nous avons donc :
-Télechargé les modules
-Evalué leurs pages d’aide et d’Overview
-Tester leur fonctionnement sur Scilab 5
-Essayer de les compiler sur Scilab 6
-Pour le passage des toolboxes, nous avons donc commencé par les toolboxes composées uniquement de macros puisque leur passage était le plus facile à réaliser.
-En général les tests sur une toolbox se fait en 3 étapes :
-la compilation de la toolbox : Build
-Le chargement : Load
-Puis l'exécution des tests : test_run
-Pour chaque modules nous avons ainsi suivi les étapes et réalisé les tests de fonctionnements. Même si le but est de passer tous les tests avec succès, si autant de tests passent sur la version 6 que sur la 5, on peut considérer le module comme fonctionnel (on vérifie toujours les erreurs et on ne les corrige pas lorsqu’elles “ne sont pas de notre ressort” - tests de précision.
-
-Au cours de ces tests nous avons rencontré différents problèmes. Nous avons pu régler certains grâce  à la  formation de départ et en recevant de l’aide des membres de l'équipe Scilab. Ils ont aussi été répertoriés au niveau de la fiche de portage établîtes.
-
-Pour les modules contenant des gateways , la tache était plus difficile, car on peut rencontrer différents types de problèmes tels que :
-
-Beaucoup de modules réalisent des appels à la stack qui était un espace mémoire alloué pour le logiciel, et qui n’existe plus dans la version 6. Il était donc nécessaire de changer ces appels, par de fonctions de L’API C par exemple.
-Pour des raisons structurelles ou d’utilisation de la stack en fortran il est parfois nécessaire de réécrire toutes un ensemble de gateways dans le nouveau format C++
-Certaines fonctions n’existent plus dans la version 6, donc le travail consiste à changer l’implémentation faisant appel à ces fonctions. 
-Pour les gateways qui utilisent l’api_scilab sans aucun appel à la stack, il suffit de changer le prototype des gateways (le controlleur de l’API n’est plus global mais local). Un include a change de nom pour éviter des conflits.
-
-Dans le cas particulier du module sci-ipopt, la partie source de la toolbox et la partie gateway étaient liées. Des appels à la stack ainsi qu’a des fonction non existantes étaient réalisés. 
-On a donc du appliquer toutes les étapes précédemment citées en plus de séparer les sources et les gateways.
-
-Bilan des travaux
-A la fin de notre nous avons ainsi fais passer l’ensemble des toolboxs  qui nous on été confier a l’exception de ‘sci-ipopt’ sur lequel  
-
-Bilan personnels
+\end{document}
 
