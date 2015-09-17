@@ -1,14 +1,17 @@
-\subsection*{Kriging Doe}
+\subsection*{Kriging \& Doe}
 
 Dans cette partie notre but était de réaliser l’industrialisation
-de module traitant des domaines de la statistique et de la
+de modules traitant des domaines de la statistique et de la
 geostatistique. Il s'agit:
+
 \begin{itemize}
-\item Du Design of experiment(DoE)
-\item Technique d’estimations du kriging et des ses dérivés(Kriging, CoKriging)
+\item Du Design of Experiment (DoE)
+\item Technique d’estimation du Kriging et des ses dérivés (Kriging, Cokriging)
 \end{itemize}
+
 Nous nous sommes bas\'es sur des travaux réalisés par d’anciens
-stagiaires de l’entreprise.
+stagiaires de Dassault Syst\`eme br\'eziliens qui travaillaient avec
+l’entreprise.
 
 Notre mission consistait à :
 
@@ -18,14 +21,14 @@ Notre mission consistait à :
         et de rechercher des informations sur les thèmes.
     \item Restructurer leur codes sous un format plus industrialisable.
     \item Corriger les différentes erreurs qu’on aurait
-        éventuellement rencontré et faire tourner leur implémentations.
+        éventuellement rencontrées et faire tourner leur implémentations.
     \item Établir des scripts de démonstration pour ces nouveaux modules.
     \item Et pour finir, comparer la nouvelle toolbox avec d’autres
         existantes (Dace, Scidoe) pour déterminer l’apport de ces
-        travaux sur la bibliothèque de module Scilab.
+        travaux sur la bibliothèque de modules Scilab.
 \end{itemize}
 
-Nous avons donc réalisé ces travaux pendant 1 mois et 2 semaine,
+Nous avons donc réalisé ces travaux pendant 1 mois et 2 semaines,
 et présent\'e notre analyse sur le sujet à notre responsable
 et au reste de l’équipe Scilab.
 
@@ -33,21 +36,21 @@ Pour l'industrialisation de ce code,
 nous avons utilisé les connaissances relatives à
 l’extensibilité du logiciel, acquises lors de la formation.
 Nous avons donc utilisé un squelette de toolbox classique
-de scilab ({\tt toolbox\_skeleton}) pour mettre en forme
+de Scilab ({\tt toolbox\_skeleton}) pour mettre en forme
 le code de départ.
 
-Après une étude approfondi et un ensemble de tests et comparaisons,
-nous avons convenu que les modules déjà existant pour ces thématiques,
-produisait de meilleures performances que ceux sur lesquels nous travaillions.
+Après une étude approfondie et un ensemble de tests et comparaisons,
+nous avons convenu que les modules existants pour ces thématiques,
+produisaient de meilleures performances que ceux sur lesquels nous
+travaillions.
 
 Néanmoins il était éventuellement intéressant d’ajouter aux modules existants,
 certaines fonctionalités de ces travaux.
 
-\subsubsection*{Exemple}
 Pour la toolbox Dace traitant du kriging, nous avions ainsi l’idée d'intégrer
-la technique du cokriging dite plus précise mais plus lourde en calcul. Aprés des
-recherche sur le sujet, nous avons trouvé des implémentations de cette technique
-sur le logiciel Matlab, et entammé des travaux de conversion.
-Mais par souci de temps nous n'avons pas fini cette partie et nous nous sommes concentrer
-sur le reste des objecitfs du stage.
+la technique du cokriging plus précise mais plus lourde en calcul.
+Aprés des recherches sur le sujet, nous avons trouvé des implémentations
+de cette technique sur Matlab, et entammé des travaux de conversion.
+Mais par souci de temps nous n'avons pas fini cette partie et nous nous
+sommes concentr\'es sur le reste des objectifs du stage.
 

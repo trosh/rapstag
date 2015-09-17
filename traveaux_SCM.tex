@@ -1,15 +1,15 @@
-\subsection*{Passage des ``complementary modules'' sur la version 6}
+\subsection*{Passage des \textit{Complementary Modules} sur Scilab 6}
 
 Ici notre but était de faire passer les modules de la liste
-SCM (Scilab complementary modules) dans la versions 6 de scilab.
+Scilab Complementary Modules dans la version 6 de Scilab.
 Il est nécessaire de passer par cette étape puisque pour la
 nouvelle ``release'', le coeur du logiciel a été refondu,
 et des fonctions internes ont été modifiées ou supprimées.
 Ainsi plusieurs modules dépendants d’anciennes fonctions internes
-doivent être réécrit.
+doivent être réécrits.
 
 Nous avons commencé ces travaux en établissant une feuilles de calcul,
-ou nous avons répertorier l’ensemble des toolboxes à tester.
+ou nous avons répertori\'e l’ensemble des toolboxes à tester.
 
 On peut diviser ces modules en 2 catégories:
 
@@ -26,10 +26,10 @@ On peut diviser ces modules en 2 catégories:
 Au début de cette partie nous avons donc :
 
 \begin{itemize}
-\item Télechargé les modules
-\item Evalué leurs pages d’aide et d’Overview
-\item Tester leur fonctionnement sur Scilab 5
-\item Essayer de les compiler sur Scilab 6
+    \item Télechargé les modules
+    \item Evalué leurs pages d’aide et d’{\it overview}
+    \item Tester leur fonctionnement sur Scilab 5
+    \item Essayer de les compiler sur Scilab 6
 \end{itemize}
 
 Pour le passage des toolboxes, nous avons donc commencé par
@@ -42,13 +42,13 @@ En général les tests sur une toolbox se font en 3 étapes :
     \item la compilation de la toolbox : {\tt exec builder.sce}
     \item Le chargement : {\tt exec loader.sce}
         (V\'erifier que la toolbox charge sans probl\`eme).
-    \item Puis l'exécution des tests : {\tt test\_run}
+    \item Puis l'exécution des tests : \texttt{test\_run \textit{path}}
 \end{itemize}
 
-Pour chaque modules nous avons ainsi suivi les étapes et réalisé
-les tests de fonctionnements. Même si le but est de passer tous
-les tests avec succès, si autant de tests passent sur la version
-6 que sur la 5, on peut considérer le module comme fonctionnel
+Nous avons ainsi test'e chaque module.
+Même si le but est de passer tous les tests avec succès,
+si autant de tests passent sur la version 6 que sur la 5,
+on peut considérer le module comme fonctionnel
 (on vérifie toujours les erreurs et on ne les corrige pas
 lorsqu’elles “ne sont pas de notre ressort” - tests de précision
 par exemple).
@@ -58,33 +58,38 @@ Nous avons pu régler certains grâce à la formation de départ
 et en recevant de l’aide des membres de l'équipe Scilab.
 Ils ont aussi été répertoriés au niveau de la fiche de portage établie.
 
-Pour les modules contenant des gateways, la tache était plus difficile,
+Pour les modules contenant des gateways, la t\^ache était plus difficile,
 car on peut rencontrer différents types de problèmes tels que :
 
-Beaucoup de modules réalisent des appels à la stack
-(qui était un espace mémoire alloué pour le logiciel),
-qui n’existe plus dans la version 6.
-Il était donc nécessaire de changer ces appels,
-par de fonctions de L’{\tt api\_scilab} (en C) par exemple.
-
-Pour des raisons structurelles ou d’utilisation de la stack
-en Fortran il est parfois nécessaire de réécrire tout un ensemble
-de gateways dans le nouveau format C++.
-
-Certaines fonctions n’existent plus dans la version 6,
-donc le travail consiste à changer l’implémentation
-faisant appel à ces fonctions.
-
-Pour les gateways qui utilisent l’{\tt api\_scilab} sans aucun appel
-à la stack, il suffit de changer le prototype des gateways
-(le controlleur de l’API n’est plus global mais local).
-Un include a chang\'e de nom pour éviter des conflits.
+\begin{itemize}
+    \item Beaucoup de modules réalisent des appels à la stack
+        (qui était un espace mémoire alloué pour le logiciel),
+        qui n’existe plus dans la version 6.
+        Il était donc nécessaire de changer ces appels,
+        par des fonctions de L’{\tt api\_scilab} (en C) par exemple.
+    \item Pour des raisons structurelles ou d’utilisation de la stack
+        type Fortran il est parfois nécessaire de réécrire tout un ensemble
+        de gateways dans le nouveau format C++.
+    \item Les gateways en Fortran ont d\^u totalement \^etre r\'e\'ecrites
+        en C++ (le type de programmation n'est plus support\'e dans
+        Scilab 6).
+    \item Certaines fonctions n’existent plus dans la version 6,
+        donc le travail consiste à changer l’implémentation
+        faisant appel à ces fonctions.
+    \item Pour les gateways qui utilisent l’{\tt api\_scilab} sans aucun appel
+        à la stack, il suffit de changer le prototype des gateways
+        (le controlleur de l’API n’est plus global mais local).
+        \`A part cette diff\'erence, l'{\tt api\_scilab} est maintenue
+        dans Scilab 6.
+    \item Un include a chang\'e de nom pour éviter des conflits
+        ({\tt MALLOC.h} $\rightarrow$ {\tt sci\_malloc.h})
+\end{itemize}
 
 Dans le cas particulier du module {\tt sci-ipopt},
 la partie source de la toolbox et la partie gateway étaient liées.
-Des appels à la stack ainsi qu’a des fonction non
-existantes étaient réalisés.
+Il y avait des appels à la stack ainsi qu'\`a des fonctions non
+existantes.
 
-On a donc du appliquer toutes les étapes précédemment citées
+On a donc d\^u appliquer toutes les étapes précédemment citées
 en plus de séparer les sources et les gateways.
 
